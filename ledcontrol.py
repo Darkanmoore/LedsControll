@@ -1,46 +1,27 @@
-import sys
+import sys, os
 
 # Function to turn off all leds
 def switchoff():
-   l1 = open("/sys/class/leds/green:ph07:led4/brightness","w")
-   l2 = open("/sys/class/leds/blue:ph21:led1/brightness","w")
-   l3 = open("/sys/class/leds/orange:ph20:led2/brightness","w")
-   l4 = open("/sys/class/leds/white:ph11:led3/brightness","w")
-   l1.write("0")
-   l2.write("0")
-   l3.write("0")
-   l4.write("0")
-   l1.close()
-   l2.close()
-   l3.close()
-   l4.close()
+   os.system("echo 0 > /sys/class/leds/green:ph07:led4/brightness")
+   os.system("echo 0 > /sys/class/leds/blue:ph21:led1/brightness")
+   os.system("echo 0 > /sys/class/leds/orange:ph20:led2/brightness")
+   os.system("echo 0 > /sys/class/leds/white:ph11:led3/brightness")
 
 # Function to turn on all leds
 def switchon():
-   l1 = open("/sys/class/leds/green:ph07:led4/brightness","w")
-   l2 = open("/sys/class/leds/blue:ph21:led1/brightness","w")
-   l3 = open("/sys/class/leds/orange:ph20:led2/brightness","w")
-   l4 = open("/sys/class/leds/white:ph11:led3/brightness","w")
-   l1.write("1")
-   l2.write("1")
-   l3.write("1")
-   l4.write("1")
-   l1.close()
-   l2.close()
-   l3.close()
-   l4.close()
+   os.system("echo 1 > /sys/class/leds/green:ph07:led4/brightness")
+   os.system("echo 1 > /sys/class/leds/blue:ph21:led1/brightness")
+   os.system("echo 1 > /sys/class/leds/orange:ph20:led2/brightness")
+   os.system("echo 1 > /sys/class/leds/white:ph11:led3/brightness")
 
 # Function to turn on a specific led
 def active(file):
-   f = open(file,"w")
-   f.write("1")
-   f.close()
+   os.system("echo 1 >"+file)
+
 
 # Function to turn off a specific led
 def deactive(file):
-   f = open(file,"w")
-   f.write("0")
-   f.close()
+   os.system("echo 0 >"+file)
 
 # Body of programm
 def client():
@@ -96,3 +77,4 @@ def main():
 
 if __name__ == '__main__':
   main()
+
